@@ -1,17 +1,27 @@
 //O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
 let listaDeAmigos = [ ];
 let numeroDeAmigos = 0;
+let amigoSorteado; 
 
-/* function exibirNomesNaTela(tag, texto) {
-    let nomes = document.querySelector(tag);
-    let lista = document.querySelector('ul');
-    nomes.lista.appendChild = texto;
-}
- */
+/* function exibirNomesNaTela() {
+    let listaAmigos = document.getElementById('listaAmigos');
+    const amigo = document.createElement('li');
 
+    for (let i = 0; i < listaDeAmigos.length; i++) {
+        listaAmigos.textContent = listaAmigos[i];
+    }
+} */
+ 
 function sortearAmigo() {
-    sorteio = parseInt(Math.random() * numeroDeAmigos + 1);
-    console.log(listaDeAmigos[sorteio -1]);
+    amigoSorteado = parseInt(Math.random() * numeroDeAmigos + 1);
+    console.log(listaDeAmigos[amigoSorteado -1]);
+    
+    resultadoDoSorteio();
+}
+
+function resultadoDoSorteio() {
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = "<li>O amigo secreto é: " + amigoSorteado + "<li>"
 }
 
 function adicionarAmigo () {
@@ -23,7 +33,7 @@ function adicionarAmigo () {
         listaDeAmigos.push(nomeDoAmigo);
         numeroDeAmigos++;
         //console.log(listaDeAmigos);
-        //console.log(numeroDeAmigos);
+        console.log(numeroDeAmigos);
         console.log(listaDeAmigos[numeroDeAmigos - 1]);
         limparCampo();
     }
