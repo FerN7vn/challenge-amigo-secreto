@@ -5,33 +5,7 @@ let amigoSorteado = "";
 let listaAmigos = document.getElementById('listaAmigos');
 let resultado = document.getElementById('resultado');
 
-//Função para exibir a lista dos nomes dos amigos.
-function exibirNomesNaTela() {
-    listaAmigos.innerHTML = "";
-    let conteudo = '';
-
-    for (let i = 0; i < listaDeAmigos.length; i++) {
-        conteudo += "<li><strong>" + listaDeAmigos[i] + "</strong></li>";
-    }
-    
-    listaAmigos.innerHTML = conteudo;
-}
- 
-//Função para sortear o amigo secreto
-function sortearAmigo() {
-    amigoSorteado = parseInt(Math.random() * numeroDeAmigos + 1);
-    listaAmigos.innerHTML = "";
-    
-    resultadoDoSorteio();
-}
-
-//Função para mostrar o resultado do sorteio.
-function resultadoDoSorteio() {
-    resultado.innerHTML = "<li>O amigo secreto sorteado é: " + listaDeAmigos[amigoSorteado -1] + "<li>"
-}
-
-
-//Função para adicionar o amigos na lista.
+//Função para adicionar os amigos na lista.
 function adicionarAmigo () {
 
     if (listaDeAmigos.length > 0 && amigoSorteado != "") {
@@ -55,6 +29,31 @@ function adicionarAmigo () {
 function limparCampo() {
     let campo = document.querySelector('input');
     campo.value = "";
+}
+
+//Função para exibir a lista dos nomes dos amigos.
+function exibirNomesNaTela() {
+    listaAmigos.innerHTML = "";
+    let conteudo = '';
+
+    for (let i = 0; i < listaDeAmigos.length; i++) {
+        conteudo += "<li><strong>" + listaDeAmigos[i] + "</strong></li>";
+    }
+    
+    listaAmigos.innerHTML = conteudo;
+}
+ 
+//Função para sortear o amigo secreto
+function sortearAmigo() {
+    amigoSorteado = parseInt(Math.random() * numeroDeAmigos + 1);
+    listaAmigos.innerHTML = "";
+    
+    resultadoDoSorteio();
+}
+
+//Função para mostrar o resultado do sorteio.
+function resultadoDoSorteio() {
+    resultado.innerHTML = "<li>O amigo secreto sorteado é: " + listaDeAmigos[amigoSorteado -1] + "<li>";
 }
 
 //Função para reiniciar o jogo.
