@@ -1,47 +1,43 @@
-//O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
+//Variáveis globais
 let listaDeAmigos = [ ];
 let numeroDeAmigos = 0;
-let amigoSorteado; 
-/* let listaAmigos = document.getElementById('listaAmigos');
-let amigo = document.createElement('li');
-let strongTag = document.createElement('strong'); */
+let amigoSorteado = ""; 
+let listaAmigos = document.getElementById('listaAmigos');
+let resultado = document.getElementById('resultado');
 
-/* function exibirNomesNaTela() {
-    for (let i = 0; i < listaDeAmigos.length; i++) {
-        strongTag.textContent = listaDeAmigos[i];
-        amigo.appendChild(strongTag);
-        listaAmigos.appendChild(amigo);
-    }
-}  */
-
+//Função para exibir a lista dos nomes dos amigos.
 function exibirNomesNaTela() {
-    let listaAmigos = document.getElementById('listaAmigos');
     listaAmigos.innerHTML = "";
-
     let conteudo = '';
 
     for (let i = 0; i < listaDeAmigos.length; i++) {
         conteudo += "<li><strong>" + listaDeAmigos[i] + "</strong></li>";
     }
-
+    
     listaAmigos.innerHTML = conteudo;
 }
  
+//Função para sortear o amigo secreto
 function sortearAmigo() {
     amigoSorteado = parseInt(Math.random() * numeroDeAmigos + 1);
-    console.log(listaDeAmigos[amigoSorteado -1]);
     listaAmigos.innerHTML = "";
     
     resultadoDoSorteio();
-    /* reiniciarJogo(); */
 }
 
+//Função para mostrar o resultado do sorteio.
 function resultadoDoSorteio() {
-    let resultado = document.getElementById('resultado');
-    resultado.innerHTML = "<li>O amigo secreto é: " + listaDeAmigos[amigoSorteado -1] + "<li>"
+    resultado.innerHTML = "<li>O amigo secreto sorteado é: " + listaDeAmigos[amigoSorteado -1] + "<li>"
 }
 
+
+//Função para adicionar o amigos na lista.
 function adicionarAmigo () {
+
+    if (listaDeAmigos.length > 0 && amigoSorteado != "") {
+        reiniciarJogo();
+    }
+
     let nomeDoAmigo = document.querySelector('input').value;
     
     if (nomeDoAmigo == "") {
@@ -49,25 +45,22 @@ function adicionarAmigo () {
     } else {
         listaDeAmigos.push(nomeDoAmigo);
         numeroDeAmigos++;
-        //console.log(listaDeAmigos);
-        console.log(numeroDeAmigos);
-        console.log(listaDeAmigos[numeroDeAmigos - 1]);
         limparCampo();
     }
-    
+
     exibirNomesNaTela();
 }
 
+//Função para limpar o campo de input.
 function limparCampo() {
     let campo = document.querySelector('input');
     campo.value = "";
 }
 
-function reiniciarJogo() {
-    if (listaDeAmigos.length > 0) {
-    amigoSorteado = ""; 
+//Função para reiniciar o jogo.
+function reiniciarJogo() {   
+    numeroDeAmigos = 0;
+    amigoSorteado = "";
     listaDeAmigos = [];
     resultado.innerHTML = "";
-    }
-} 
-    
+}
